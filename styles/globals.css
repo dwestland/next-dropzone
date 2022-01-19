@@ -15,15 +15,25 @@ a {
   box-sizing: border-box;
 }
 
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .dropzone {
   border: 3px dashed green;
-  background: lightsalmon;
-  width: 200px;
+  background: lightblue;
+  width: 400px;
   height: 200px;
   margin: auto;
   background-size: 100px 30px;
-}
-
-.home-div {
-  border: 1px double blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

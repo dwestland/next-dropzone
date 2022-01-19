@@ -1,6 +1,9 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import React, { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 // import { updateSourceFile } from 'typescript'
+import Nav from '@/components/Nav'
 
 const Preview = () => {
   const [yourImage, setImage] = useState([])
@@ -24,9 +27,10 @@ const Preview = () => {
   }
 
   return (
-    <div>
-      <p>Preview</p>
-      <div {...getRootProps()}>
+    <div className="container ">
+      <h1>Preview</h1>
+      <Nav />
+      <div {...getRootProps()} className=" dropzone">
         <input {...getInputProps()} />
         {isDragActive ? (
           <p>Drop the Image here..</p>
@@ -43,7 +47,7 @@ const Preview = () => {
               style={{
                 width: '600px',
                 height: '400px',
-                border: '3px solid #ccc',
+                border: '3px solid green',
               }}
               alt="preview"
             />
