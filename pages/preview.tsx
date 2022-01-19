@@ -17,8 +17,11 @@ const Preview = () => {
       )
     },
   })
+  console.log('yourImage', yourImage)
 
-  console.log('yourImage[0].name:', yourImage[0].name)
+  if (yourImage.length > 0) {
+    console.log('yourImage[0].name:', yourImage[0].name)
+  }
 
   return (
     <div>
@@ -32,7 +35,7 @@ const Preview = () => {
         )}
       </div>
       <div>
-        <h1>{yourImage[0].name}</h1>
+        {/* {yourImage[0].name && <h1>{yourImage[0].name}</h1>} */}
         {yourImage.map((upFile) => (
           <div>
             <img
