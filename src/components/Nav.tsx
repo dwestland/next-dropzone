@@ -12,6 +12,10 @@ const Nav = () => (
       <a>Preview</a>
     </Link>
     <br />
+    <Link href="/paste-from-clipboard">
+      <a>Paste from Clipbord</a>
+    </Link>
+    <br />
   </div>
 )
 
