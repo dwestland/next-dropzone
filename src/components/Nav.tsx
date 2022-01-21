@@ -16,6 +16,10 @@ const Nav = () => (
       <a>Paste from Clipbord</a>
     </Link>
     <br />
+    <Link href="/paste-container">
+      <a>Paste from Clipbord - Classes</a>
+    </Link>
+    <br />
   </div>
 )
 
