@@ -13,11 +13,11 @@ const Nav = () => (
     </Link>
     <br />
     <Link href="/paste-from-clipboard">
-      <a>Paste from Clipbord</a>
+      <a>Paste from Clipboard</a>
     </Link>
     <br />
     <Link href="/paste-container">
-      <a>Paste from Clipbord - Classes</a>
+      <a>Paste from Clipboard - Classes</a>
     </Link>
     <br />
   </div>

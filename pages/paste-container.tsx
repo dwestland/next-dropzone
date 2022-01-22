@@ -1,7 +1,6 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import React, { Component } from 'react'
-// import { render } from 'react-dom'
 import PasteContainer from '@/components/PasteContainer'
 
 const styles = {
@@ -27,8 +26,11 @@ const Instructions = () => (
 )
 
 class pasteContainer extends Component {
-  state = {
-    errorState: '',
+  constructor(props) {
+    super(props)
+    this.state = {
+      errorState: '',
+    }
   }
 
   render() {
@@ -60,5 +62,3 @@ class pasteContainer extends Component {
 }
 
 export default pasteContainer
-
-// render(<App />, document.getElementById('root'))

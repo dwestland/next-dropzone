@@ -20,17 +20,17 @@ const Home = () => {
     acceptedFiles
   )
 
-  console.log(
-    '%c acceptedFiles ',
-    'background: red; color: white',
-    acceptedFiles
-  )
-
+  if (acceptedFiles.length > 0) {
+    console.log(
+      '%c acceptedFiles[0].name ',
+      'background: red; color: white',
+      acceptedFiles[0].name
+    )
+  }
   return (
     <div className="container home-div">
       <h1>Home</h1>
       <Nav />
-
       <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} />
         {isDragActive ? (
@@ -38,6 +38,7 @@ const Home = () => {
         ) : (
           <p>Drag &amp; drop some files here, or click to select files</p>
         )}
+        {acceptedFiles.length > 0 && acceptedFiles[0].name}
       </div>
     </div>
   )

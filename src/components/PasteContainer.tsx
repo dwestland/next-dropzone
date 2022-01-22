@@ -9,16 +9,20 @@ import { Component } from 'react'
 // </PasteContainer>
 
 export default class PasteContainer extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      items: [],
+    }
+  }
+
   static displayName = 'PasteContainer'
 
   static defaultProps = {
     onPaste: () => null,
     errorHandler: () => null,
     acceptedFiles: ['image/gif', 'image/png', 'image/jpeg', 'image/bmp'],
-  }
-
-  state = {
-    items: [],
   }
 
   isValidFormat = (fileType) => this.props.acceptedFiles.includes(fileType)
