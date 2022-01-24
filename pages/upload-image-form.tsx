@@ -3,22 +3,36 @@
 import React, { useState } from 'react'
 import Nav from '@/components/Nav'
 
-export default function PrivatePage() {
+const PlainPage = () => {
   const [image, setImage] = useState(null)
   const [createObjectURL, setCreateObjectURL] = useState(null)
 
   const uploadToClient = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const i = e.target.files[0]
+    console.log('%c e ', 'background: red; color: white', e)
+    console.log(
+      '%c e.target.file ',
+      'background: red; color: white',
+      e.target.file
+    )
 
-      setImage(i)
-      setCreateObjectURL(URL.createObjectURL(i))
+    if (e.target.files && e.target.files[0]) {
+      const imageTarget = e.target.files[0]
+
+      setImage(imageTarget)
+      setCreateObjectURL(URL.createObjectURL(imageTarget))
     }
   }
 
   const uploadToServer = async () => {
-    const body = new FormData()
-    console.log('file', image)
+    const body = new FormData() // create set of key/value pairs for multipart/form-data
+
+    console.log('%c image ', 'background: red; color: white', image)
+    console.log(
+      '%c createObjectURL ',
+      'background: red; color: white',
+      createObjectURL
+    )
+
     body.append('file', image)
     await fetch('/api/upload', {
       method: 'POST',
@@ -34,12 +48,16 @@ export default function PrivatePage() {
 
   return (
     <div className="container home-div">
-      <h1>Home</h1>
+      <h1>Plain</h1>
       <Nav />
       <div>
         {image && <h2>{image.name}</h2>}
 
-        <img src={createObjectURL} alt={!!image && image.name} />
+        <img
+          src={createObjectURL}
+          style={{ border: '1px solid green' }}
+          alt=""
+        />
         <h4>Select Image</h4>
         <input
           type="file"
@@ -58,3 +76,5 @@ export default function PrivatePage() {
     </div>
   )
 }
+
+export default PlainPage
