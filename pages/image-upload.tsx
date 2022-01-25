@@ -10,9 +10,9 @@ const PlainPage = () => {
   const uploadToClient = (e) => {
     console.log('%c e ', 'background: red; color: white', e)
     console.log(
-      '%c e.target.file ',
+      '%c e.target.files[0] ',
       'background: red; color: white',
-      e.target.file
+      e.target.files[0]
     )
 
     if (e.target.files && e.target.files[0]) {

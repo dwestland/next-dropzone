@@ -58,7 +58,7 @@ const Preview = () => {
         {isDragActive ? (
           <p>Drop the Image here..</p>
         ) : (
-          <p>Drag &amp; Drop Image here || or click to see Image</p>
+          <p>Drag &amp; Drop Image here or click to see Image</p>
         )}
       </div>
       <div>
@@ -77,9 +77,9 @@ const Preview = () => {
             <img
               src={upFile.preview}
               style={{
-                width: '600px',
                 height: '400px',
-                border: '3px solid green',
+                objectFit: 'cover',
+                width: '600px',
               }}
               alt="preview"
             />

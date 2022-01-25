@@ -48,11 +48,7 @@ const Home = () => {
         )}
         {acceptedFiles.length > 0 && acceptedFiles[0].name}
       </div>
-      <button
-        className="btn btn-primary"
-        type="submit"
-        onClick={uploadToServer}
-      >
+      <button type="submit" onClick={uploadToServer}>
         Send to server
       </button>
     </div>
