@@ -1,32 +1,40 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { useDropzone } from 'react-dropzone'
-// import styles from '../styles/Home.module.css'
-
 import Nav from '@/components/Nav'
 
 const Home = () => {
+  const [image, setImage] = useState(null)
+  const [createObjectURL, setCreateObjectURL] = useState(null) // Unused
+
+  // //////////////////////////////////////////////////////////////////////////////
+  // Unused functionality
   const onDrop = useCallback((acceptedFiles) => {
     console.log('acceptedFiles', acceptedFiles)
     // Do something with the files
   }, [])
+  // //////////////////////////////////////////////////////////////////////////////
+
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({ onDrop })
+    useDropzone({ onDrop }) // Argument of type '{ onDrop: any; }' is not assignable to parameter of type 'DropzoneOptions'.
 
-  console.log(
-    '%c acceptedFiles ',
-    'background: red; color: white',
-    acceptedFiles
-  )
-
-  if (acceptedFiles.length > 0) {
-    console.log(
-      '%c acceptedFiles[0].name ',
-      'background: red; color: white',
-      acceptedFiles[0].name
-    )
+  const uploadToServer = async () => {
+    const body = new FormData() // create set of key/value pairs for multipart/form-data
+    body.append('file', image)
+    await fetch('/api/upload', {
+      method: 'POST',
+      body,
+    })
   }
+
+  useEffect(() => {
+    if (acceptedFiles && acceptedFiles[0]) {
+      const imageTarget = acceptedFiles[0]
+      setImage(imageTarget)
+    }
+  }, [acceptedFiles])
+
   return (
     <div className="container home-div">
       <h1>Home - Dropzone</h1>
@@ -40,6 +48,13 @@ const Home = () => {
         )}
         {acceptedFiles.length > 0 && acceptedFiles[0].name}
       </div>
+      <button
+        className="btn btn-primary"
+        type="submit"
+        onClick={uploadToServer}
+      >
+        Send to server
+      </button>
     </div>
   )
 }
