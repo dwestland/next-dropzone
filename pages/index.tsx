@@ -29,7 +29,7 @@ const Home = () => {
   }
   return (
     <div className="container home-div">
-      <h1>Home</h1>
+      <h1>Home - Dropzone</h1>
       <Nav />
       <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} />

@@ -51,7 +51,7 @@ const Preview = () => {
 
   return (
     <div className="container ">
-      <h1>Preview</h1>
+      <h1>Dropzone with Image Preview</h1>
       <Nav />
       <div {...getRootProps()} className=" dropzone">
         <input {...getInputProps()} />
@@ -64,12 +64,12 @@ const Preview = () => {
       <div>
         {name && (
           <>
-            <strong>Size:</strong> {name} &nbsp;
+            <strong>Name:</strong> {name} &nbsp;
           </>
         )}
         {size > 0 && (
           <>
-            <strong>Name:</strong> {size} &nbsp;
+            <strong>Size:</strong> {size} &nbsp;
           </>
         )}
         {yourImage.map((upFile) => (

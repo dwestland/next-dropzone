@@ -17,8 +17,6 @@ export default class PasteContainer extends Component {
     }
   }
 
-  static displayName = 'PasteContainer'
-
   static defaultProps = {
     onPaste: () => null,
     errorHandler: () => null,
