@@ -6,40 +6,45 @@ import Nav from '@/components/Nav'
 
 const PasteFunction = () => {
   const [src, setSrc] = useState()
+  const [blob, setBlob] = useState(null)
+
+  // let blob = null
 
   const handleOnPaste = (event) => {
-    console.log({ event })
+    console.log('%c event ', 'background: red; color: white', event)
+
     const { items } = event.clipboardData || event.originalEvent.clipboardData
 
-    console.log('items: ', JSON.stringify(items))
+    console.log('%c items ', 'background: red; color: white', items)
 
-    let blob = null
-    // for (let i = 0; i < items.length; i++) {
-    //   if (items[i].type.indexOf('image') === 0) {
-    //     blob = items[i].getAsFile()
-    //   }
-    // }
-    blob = items[0].getAsFile()
+    console.log(
+      '%c JSON.stringify(items) ',
+      'background: red; color: white',
+      JSON.stringify(items)
+    )
 
-    console.log('blob: ', blob)
+    // let blob = null
+    // blob = items[0].getAsFile()
+
+    setBlob(items[0].getAsFile())
 
     if (blob !== null) {
-      // console.log({ blob });
+      console.log('%c Are we getting there?? ', 'background: red; color: white')
       const reader = new FileReader()
       reader.onload = function (event) {
-        // console.log(event.target.result); // data url!
-        // console.log(event.target);
         setSrc(event.target.result)
       }
       reader.readAsDataURL(blob)
 
-      console.log({ reader })
+      console.log('%c { reader } ', 'background: red; color: white', { reader })
     }
   }
 
+  console.log('%c blob ', 'background: red; color: white', blob)
+
   const uploadToServer = async () => {
     const body = new FormData() // create set of key/value pairs for multipart/form-data
-    body.append('file', src)
+    body.append('file', blob)
     await fetch('/api/upload', {
       method: 'POST',
       body,
