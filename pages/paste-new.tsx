@@ -4,13 +4,31 @@ import React, { useCallback, useState, useEffect } from 'react'
 import { useDropzone } from 'react-dropzone'
 import Nav from '@/components/Nav'
 
-const PasteFunction = () => {
+const PasteImage = () => {
+  const [image, setImage] = useState()
+  const [createObjectURL, setCreateObjectURL] = useState(null)
   const [src, setSrc] = useState()
   const [blob, setBlob] = useState(null)
 
-  // let blob = null
+  // const [blob, setBlob] = useState(null)
 
-  const handleOnPaste = (e) => {
+  // useEffect(() => {
+  //   console.log('window.Clipboard', window.Clipboard);
+  // }, [window]);
+
+  // const pasteHandler = (e) => {
+  //   console.log('e.clipboardData.files[0]', e.clipboardData.files[0])
+  //   eagle = e.clipboardData.files[0]
+  // }
+  // const pasteHandler = (e) => {
+  //   console.log('%c e ', 'background: red; color: white', e)
+  //   if (e.target.files && e.target.files[0]) {
+  //     const imageTarget = e.target.files[0]
+  //     setImage(imageTarget)
+  //     setCreateObjectURL(URL.createObjectURL(imageTarget))
+  //   }
+  // }
+  const pasteHandler = (e) => {
     console.log('%c e ', 'background: red; color: white', e)
 
     const { items } = e.clipboardData || e.originalEvent.clipboardData
@@ -56,10 +74,12 @@ const PasteFunction = () => {
     }
   }, [blob])
 
-  console.log('%c blob ', 'background: red; color: white', blob)
+  useEffect(() => {
+    window.addEventListener('paste', pasteHandler)
+  }, [])
 
   const uploadToServer = async () => {
-    console.log('%c blob.name ', 'background: red; color: white', blob.name)
+    console.log('%c blob ', 'background: black; color: white', blob)
 
     const body = new FormData() // create set of key/value pairs for multipart/form-data
     body.append('file', blob)
@@ -70,15 +90,16 @@ const PasteFunction = () => {
   }
 
   return (
-    <div className="container home-div">
-      <h1>Paste Function</h1>
+    <div className="container">
+      <h1>Paste Function - no input field</h1>
       <p>
-        Does not use react-dropzone. Click in input and paste from clipboard.
-        Has image preview. Can upload image to public folder using an API. Uses
+        Does not use react-dropzone. Click on page and paste from clipboard. Has
+        image preview. Can upload image to public folder using an API. Uses
         formidable and mv on backend.
       </p>
       <Nav />
-      <input onPaste={handleOnPaste} />
+      {/* <input onPaste={handleOnPaste} /> */}
+      <br />
       <br />
       {src && <img src={src} alt="pic" />}
       <button type="submit" onClick={uploadToServer}>
@@ -88,6 +109,6 @@ const PasteFunction = () => {
   )
 }
 
-export default PasteFunction
+export default PasteImage
 
 // https://codesandbox.io/s/0bvvy?file=/src/Logic/index.js:64-833

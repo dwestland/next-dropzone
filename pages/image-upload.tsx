@@ -8,16 +8,9 @@ const PlainPage = () => {
   const [createObjectURL, setCreateObjectURL] = useState(null)
 
   const uploadToClient = (e) => {
-    console.log('%c e ', 'background: red; color: white', e)
-    console.log(
-      '%c e.target.files[0] ',
-      'background: red; color: white',
-      e.target.files[0]
-    )
-
+    console.log('%c e ', 'background: green; color: white', e)
     if (e.target.files && e.target.files[0]) {
       const imageTarget = e.target.files[0]
-
       setImage(imageTarget)
       setCreateObjectURL(URL.createObjectURL(imageTarget))
     }
@@ -25,14 +18,6 @@ const PlainPage = () => {
 
   const uploadToServer = async () => {
     const body = new FormData() // create set of key/value pairs for multipart/form-data
-
-    console.log('%c image ', 'background: red; color: white', image)
-    console.log(
-      '%c createObjectURL ',
-      'background: red; color: white',
-      createObjectURL
-    )
-
     body.append('file', image)
     await fetch('/api/upload', {
       method: 'POST',
@@ -40,15 +25,14 @@ const PlainPage = () => {
     })
   }
 
-  console.log(
-    '%c createObjectURL ',
-    'background: red; color: white',
-    createObjectURL
-  )
-
   return (
     <div className="container home-div">
       <h1>Image Upload - No Dropzone</h1>
+      <p>
+        Does not use react-dropzone. Select file from input field. Has image
+        preview. Can upload image to public folder using an API. Uses formidable
+        and mv on backend.
+      </p>
       <Nav />
       <div>
         {image && <h2>{image.name}</h2>}

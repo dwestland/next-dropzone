@@ -7,7 +7,7 @@ import Nav from '@/components/Nav'
 const Sorry = ({ error, onClose }) => (
   <div>
     <h3>
-      {error}{' '}
+      {error}
       <button type="button" onClose={onClose}>
         &times;
       </button>
@@ -29,6 +29,10 @@ class pasteContainer extends Component {
     return (
       <div className="container home-div">
         <h1>Paste from Clipboard with Classes - No Dropzone</h1>
+        <p>
+          Does not use react-dropzone. Paste image from clipboard. Can select
+          group of images. Uses React Classes.
+        </p>
         <Nav />
         <PasteContainer
           onPaste={(files) => console.log(files)}

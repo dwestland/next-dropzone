@@ -20,6 +20,14 @@ const Nav = () => (
       <a>Image Upload - No Dropzone</a>
     </Link>
     <br />
+    <Link href="/paste-function">
+      <a>Paste Function - No Dropzone</a>
+    </Link>
+    <br />
+    <Link href="/paste-new">
+      <a>Paste Function - No Dropzone, no input field</a>
+    </Link>
+    <br />
   </div>
 )
 

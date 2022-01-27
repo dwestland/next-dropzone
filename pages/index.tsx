@@ -38,6 +38,7 @@ const Home = () => {
   return (
     <div className="container home-div">
       <h1>Home - Dropzone</h1>
+      <p>Uses react-dropzone. Drag and drop or sect files only.</p>
       <Nav />
       <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} />

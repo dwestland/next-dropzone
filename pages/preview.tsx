@@ -50,8 +50,12 @@ const Preview = () => {
   }
 
   return (
-    <div className="container ">
+    <div className="container">
       <h1>Dropzone with Image Preview</h1>
+      <p>
+        Uses react-dropzone. Drag and drop or sect files only. Has image
+        preview.
+      </p>
       <Nav />
       <div {...getRootProps()} className=" dropzone">
         <input {...getInputProps()} />
