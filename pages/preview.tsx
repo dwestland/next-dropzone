@@ -2,7 +2,6 @@
 /* eslint-disable import/extensions */
 import React, { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-// import { updateSourceFile } from 'typescript'
 import Nav from '@/components/Nav'
 
 const Preview = () => {
@@ -13,27 +12,8 @@ const Preview = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: 'image/*',
     onDrop: (acceptedFiles) => {
-      console.log(
-        '%c acceptedFiles ',
-        'background: red; color: white',
-        acceptedFiles
-      )
-      console.log(
-        '%c acceptedFiles[0].name ',
-        'background: red; color: white',
-        acceptedFiles[0].name
-      )
-      console.log(
-        '%c acceptedFiles[0].size ',
-        'background: red; color: white',
-        acceptedFiles[0].size
-      )
       setName(acceptedFiles[0].name)
       setSize(acceptedFiles[0].size)
-
-      // size = acceptedFiles[0].size
-      // console.log('%c size ', 'background: green; color: white', size)
-
       setImage(
         acceptedFiles.map((upFile) =>
           Object.assign(upFile, {
@@ -43,11 +23,6 @@ const Preview = () => {
       )
     },
   })
-  console.log('yourImage', yourImage)
-
-  if (yourImage.length > 0) {
-    console.log('yourImage[0].name:', yourImage[0].name)
-  }
 
   return (
     <div className="container">

@@ -6,21 +6,18 @@ import Nav from '@/components/Nav'
 
 const Home = () => {
   const [image, setImage] = useState(null)
-  const [createObjectURL, setCreateObjectURL] = useState(null) // Unused
 
-  // //////////////////////////////////////////////////////////////////////////////
   // Unused functionality
   const onDrop = useCallback((acceptedFiles) => {
     console.log('acceptedFiles', acceptedFiles)
     // Do something with the files
   }, [])
-  // //////////////////////////////////////////////////////////////////////////////
 
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({ onDrop }) // Argument of type '{ onDrop: any; }' is not assignable to parameter of type 'DropzoneOptions'.
+    useDropzone({ onDrop })
 
   const uploadToServer = async () => {
-    const body = new FormData() // create set of key/value pairs for multipart/form-data
+    const body = new FormData()
     body.append('file', image)
     await fetch('/api/upload', {
       method: 'POST',
@@ -49,9 +46,6 @@ const Home = () => {
         )}
         {acceptedFiles.length > 0 && acceptedFiles[0].name}
       </div>
-      <button type="submit" onClick={uploadToServer}>
-        Send to server
-      </button>
     </div>
   )
 }
