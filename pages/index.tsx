@@ -9,7 +9,6 @@ const Home = () => {
 
   // Unused functionality
   const onDrop = useCallback((acceptedFiles) => {
-    console.log('acceptedFiles', acceptedFiles)
     // Do something with the files
   }, [])
 

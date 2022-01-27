@@ -35,7 +35,6 @@ class pasteContainer extends Component {
         </p>
         <Nav />
         <PasteContainer
-          onPaste={(files) => console.log(files)}
           errorHandler={(err) => this.setState({ errorState: err })}
         >
           {(images) =>

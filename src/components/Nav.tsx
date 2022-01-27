@@ -17,15 +17,15 @@ const Nav = () => (
     </Link>
     <br />
     <Link href="/image-upload">
-      <a>Image Upload - No Dropzone</a>
+      <a>Select File, Upload to Server - No Dropzone</a>
     </Link>
     <br />
     <Link href="/paste-function">
-      <a>Paste Function - No Dropzone</a>
+      <a>Paste in Input, Upload to Server - No Dropzone</a>
     </Link>
     <br />
     <Link href="/paste-new">
-      <a>Paste Function - No Dropzone, no input field</a>
+      <a>Paste on Page, Upload to Server - No Dropzone</a>
     </Link>
     <br />
   </div>

@@ -11,7 +11,8 @@ npm audit fix --force
 
 ## Notes from creating this repository
 
-**Start dev:**
+**Start dev on port 4001:**
+http://localhost:4001/
 
 ```
 npm run dev

@@ -8,7 +8,6 @@ const PlainPage = () => {
   const [createObjectURL, setCreateObjectURL] = useState(null)
 
   const uploadToClient = (e) => {
-    console.log('%c e ', 'background: green; color: white', e)
     if (e.target.files && e.target.files[0]) {
       const imageTarget = e.target.files[0]
       setImage(imageTarget)
@@ -17,7 +16,7 @@ const PlainPage = () => {
   }
 
   const uploadToServer = async () => {
-    const body = new FormData() // create set of key/value pairs for multipart/form-data
+    const body = new FormData()
     body.append('file', image)
     await fetch('/api/upload', {
       method: 'POST',
@@ -43,12 +42,7 @@ const PlainPage = () => {
           alt=""
         />
         <h4>Select Image</h4>
-        <input
-          type="file"
-          name="myImage"
-          // style={{ color: 'rgba(0, 0, 0, 0)' }}
-          onChange={uploadToClient}
-        />
+        <input type="file" name="myImage" onChange={uploadToClient} />
         <button
           className="btn btn-primary"
           type="submit"
