@@ -1,7 +1,5 @@
 # next-dropzone
 
-TODO: remove formik
-
 npm i formidable
 
 npm install mv
@@ -22,4 +20,10 @@ npm run dev
 
 ```
 sudo npm i react-dropzone
+```
+
+**Dependencies for backend**
+
+```
+npm i formidable mv
 ```
